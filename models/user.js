@@ -18,29 +18,32 @@ const userSchema = new Schema({
         enum: ["starter", "pro", "business"],
         default: "starter"
     },
-    token: String
+    token: {
+        type: String,
+        default: ""
+    },
 }, {versionKey: false, timestamps: true});
 
 userSchema.post("save", handleMongooseError);
 
 const registerSchema = Joi.object({
-    name: Joi.string().required().messages({
-        "any.required": "missing required name field",
-    }),
+    // name: Joi.string().required().messages({
+    //     "any.required": "missing required 'name' field",
+    // }),
     email: Joi.string().required().messages({
-        "any.required": "missing required email field",
+        "any.required": "missing required 'email' field",
     }),
     password: Joi.string().required().messages({
-        "any.required": "missing required phone field",
+        "any.required": "missing required 'password' field",
     }),
 });
 
 const loginSchema = Joi.object({
     email: Joi.string().required().messages({
-        "any.required": "missing required email field",
+        "any.required": "missing required 'email' field",
     }),
     password: Joi.string().required().messages({
-        "any.required": "missing required phone field",
+        "any.required": "missing required 'password' field",
     }),
 });
 

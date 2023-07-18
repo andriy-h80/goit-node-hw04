@@ -47,9 +47,18 @@ const loginSchema = Joi.object({
     }),
 });
 
+const subscriptionSchema = Joi.object({
+    id: Joi.string().required(),
+    subscription: Joi.string().valid("starter", "pro", "business").required().messages({
+        "any.required": "missing required 'subscription' field",
+        "any.only": "invalid 'subscription' value. Available options: 'starter', 'pro', 'business'.",
+    }),
+})
+
 const schemas = {
     registerSchema,
     loginSchema,
+    subscriptionSchema,
 };
 
 const User = model("user", userSchema);

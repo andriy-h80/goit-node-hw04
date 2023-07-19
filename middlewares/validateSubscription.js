@@ -21,4 +21,5 @@ const validateSubscription = schema => {
 
     return func;
 };
+
 module.exports = validateSubscription;

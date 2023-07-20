@@ -36,9 +36,6 @@ const authSchema = Joi.object({
 });
 
 const subscriptionSchema = Joi.object({
-    id: Joi.string().required().messages({
-        "any.required": "missing required 'id' field",
-    }),
     subscription: Joi.string().valid("starter", "pro", "business").required().messages({
         "any.required": "missing required 'subscription' field",
         "any.only": "invalid 'subscription' value. Available options: 'starter', 'pro', 'business'.",

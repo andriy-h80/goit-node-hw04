@@ -72,17 +72,16 @@ const getCurrent = async(req, res) => {
 };
 
 const changeSubscription = async(req, res) => {
-    const {id, subscription} = req.body;
+    const {subscription} = req.body;
+    const {id} = req.user;
     const result = await User.findByIdAndUpdate(id, {subscription}, {new: true});
+    console.log(result)
     if(!result){
         throw HttpError(404, "Not found");
     }
 
     res.status(200).json({
-        "user": {
-            id,
             subscription,
-        }
     }); 
 };
 

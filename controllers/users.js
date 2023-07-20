@@ -75,7 +75,6 @@ const changeSubscription = async(req, res) => {
     const {subscription} = req.body;
     const {id} = req.user;
     const result = await User.findByIdAndUpdate(id, {subscription}, {new: true});
-    console.log(result)
     if(!result){
         throw HttpError(404, "Not found");
     }
